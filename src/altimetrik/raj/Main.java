@@ -11,21 +11,29 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
 
+    private static List<String> listoffiles=new ArrayList<>();
+
     public static void main(String[] args) {
 //    1.	create a txt file with 100 lines
         FilewriteHundredLines();
 
 //        2.Read file by line by line
         NioClass readfileclass = new NioClass();
-        readfileclass.ReadFileLineByLine();
+        listoffiles=readfileclass.ReadFileLineByLine();
 
 //        3a.linecharcount()
-    readfileclass.linecharcount();
+    List<Integer> countcharinline=readfileclass.linecharcount(listoffiles);
+        System.out.println("======================="+"Characters in every line"+"======================");
+        countcharinline.forEach(System.out::println);
+        System.out.println("=============================================");
 //    3b. sort alphabetically
         List<String> filesorted=readfileclass.alphabetically();
+        System.out.println("======================="+"File in Sorted order"+"======================");
         filesorted.forEach(System.out::println);
+        System.out.println("=============================================");
 
 //      3c.totalcount()
+        System.out.println("===================="+"Total count of characters in file"+"==============");
         readfileclass.totalCount();
     }
 
